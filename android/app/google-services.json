@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "555830333520",
+    "project_id": "manglootools",
+    "storage_bucket": "manglootools.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:555830333520:android:1de5aa805789591b288155",
+        "android_client_info": {
+          "package_name": "mangloov.one"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTjznGSeOSbxK-JDFkt0-XvGFICWsJ-Qg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
