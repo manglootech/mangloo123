@@ -1,8 +1,9 @@
-import '/components/terapistascomponentefinal_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_choice_chips.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -50,6 +51,25 @@ class _TerapistaScrollHeaderCopy2WidgetState
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 860.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'choiceChipsOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.0, 56.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.elasticOut,
+            delay: 60.0.ms,
+            duration: 1150.0.ms,
             begin: 0.0,
             end: 1.0,
           ),
@@ -133,10 +153,80 @@ class _TerapistaScrollHeaderCopy2WidgetState
                 ],
               ),
               Expanded(
-                child: wrapWithModel(
-                  model: _model.terapistascomponentefinalModel,
-                  updateCallback: () => setState(() {}),
-                  child: TerapistascomponentefinalWidget(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 8.0, 0.0, 8.0),
+                          child: FlutterFlowChoiceChips(
+                            options: [
+                              ChipData('Psicoterapia'),
+                              ChipData('Holística'),
+                              ChipData('Nutrición'),
+                              ChipData('Coaching'),
+                              ChipData('Mindfulness'),
+                              ChipData('Rehabilitación'),
+                              ChipData('Yoga')
+                            ],
+                            onChanged: (val) => setState(() =>
+                                _model.choiceChipsValue = val?.firstOrNull),
+                            selectedChipStyle: ChipStyle(
+                              backgroundColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Nunito',
+                                    color: FlutterFlowTheme.of(context).info,
+                                    letterSpacing: 0.0,
+                                  ),
+                              iconColor: Colors.white,
+                              iconSize: 18.0,
+                              elevation: 1.0,
+                              borderColor: Color(0x37181818),
+                              borderWidth: 1.0,
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            unselectedChipStyle: ChipStyle(
+                              backgroundColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Nunito',
+                                    letterSpacing: 0.0,
+                                  ),
+                              iconColor:
+                                  FlutterFlowTheme.of(context).secondaryText,
+                              iconSize: 18.0,
+                              elevation: 0.0,
+                              borderColor: FlutterFlowTheme.of(context)
+                                  .primaryBackground,
+                              borderWidth: 1.0,
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            chipSpacing: 8.0,
+                            rowSpacing: 12.0,
+                            multiselect: false,
+                            alignment: WrapAlignment.start,
+                            controller: _model.choiceChipsValueController ??=
+                                FormFieldController<List<String>>(
+                              [],
+                            ),
+                            wrapped: true,
+                          ).animateOnPageLoad(
+                              animationsMap['choiceChipsOnPageLoadAnimation']!),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

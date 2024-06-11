@@ -1,10 +1,14 @@
 import '/components/logo/logo_widget.dart';
 import '/components/tarjetadegradado_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -20,10 +24,13 @@ class SearchWidget extends StatefulWidget {
   State<SearchWidget> createState() => _SearchWidgetState();
 }
 
-class _SearchWidgetState extends State<SearchWidget> {
+class _SearchWidgetState extends State<SearchWidget>
+    with TickerProviderStateMixin {
   late SearchModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -32,6 +39,76 @@ class _SearchWidgetState extends State<SearchWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'rowOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(65.0, 0.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'iconButtonOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 1090.0.ms,
+            duration: 580.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'textFieldOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 1120.0.ms,
+            duration: 1690.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          MoveEffect(
+            curve: Curves.easeOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.0, 95.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 190.0.ms,
+            duration: 330.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -148,7 +225,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                                       onPressed: () {
                                         print('IconButton pressed ...');
                                       },
-                                    ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'iconButtonOnPageLoadAnimation']!),
                                     Expanded(
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -211,16 +289,19 @@ class _SearchWidgetState extends State<SearchWidget> {
                                           validator: _model
                                               .textControllerValidator
                                               .asValidator(context),
-                                        ),
+                                        ).animateOnPageLoad(animationsMap[
+                                            'textFieldOnPageLoadAnimation']!),
                                       ),
                                     ),
                                   ],
                                 ),
                               ),
-                            ),
+                            ).animateOnPageLoad(
+                                animationsMap['containerOnPageLoadAnimation']!),
                           ),
                         ],
-                      ),
+                      ).animateOnPageLoad(
+                          animationsMap['rowOnPageLoadAnimation']!),
                     ),
                     Padding(
                       padding:
@@ -592,7 +673,8 @@ class _SearchWidgetState extends State<SearchWidget> {
                             ),
                           ],
                         ),
-                      ),
+                      ).animateOnPageLoad(
+                          animationsMap['columnOnPageLoadAnimation']!),
                     ),
                     Padding(
                       padding:
@@ -1604,7 +1686,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 child: Container(
                   height: 50.0,
                   decoration: BoxDecoration(
-                    color: Color(0xF5F2F3F3),
+                    color: FlutterFlowTheme.of(context).primaryBackground,
                   ),
                   alignment: AlignmentDirectional(0.0, -1.0),
                   child: Stack(

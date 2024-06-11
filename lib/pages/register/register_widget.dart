@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -27,32 +26,6 @@ class _RegisterWidgetState extends State<RegisterWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => RegisterModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      GoRouter.of(context).prepareAuthEvent();
-      if (_model.passTextController.text != _model.pass2TextController.text) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Passwords don\'t match!',
-            ),
-          ),
-        );
-        return;
-      }
-
-      final user = await authManager.createAccountWithEmail(
-        context,
-        _model.emailTextController.text,
-        _model.passTextController.text,
-      );
-      if (user == null) {
-        return;
-      }
-
-      context.goNamedAuth('home', context.mounted);
-    });
 
     _model.nameTextController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
@@ -360,6 +333,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     FlutterFlowTheme.of(context).secondaryText,
                                 letterSpacing: 0.0,
                               ),
+                          keyboardType: TextInputType.visiblePassword,
                           validator: _model.passTextControllerValidator
                               .asValidator(context),
                         ),
@@ -441,6 +415,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                                     FlutterFlowTheme.of(context).secondaryText,
                                 letterSpacing: 0.0,
                               ),
+                          keyboardType: TextInputType.visiblePassword,
                           validator: _model.pass2TextControllerValidator
                               .asValidator(context),
                         ),
@@ -533,51 +508,30 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                             EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            Function() _navigate = () {};
-                            if (_model.checkboxValue!) {
-                              GoRouter.of(context).prepareAuthEvent();
-                              if (_model.passTextController.text !=
-                                  _model.pass2TextController.text) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      'Passwords don\'t match!',
-                                    ),
-                                  ),
-                                );
-                                return;
-                              }
-
-                              final user =
-                                  await authManager.createAccountWithEmail(
-                                context,
-                                _model.emailTextController.text,
-                                _model.passTextController.text,
-                              );
-                              if (user == null) {
-                                return;
-                              }
-
-                              _navigate = () =>
-                                  context.goNamedAuth('home', context.mounted);
-                            } else {
+                            GoRouter.of(context).prepareAuthEvent();
+                            if (_model.passTextController.text !=
+                                _model.pass2TextController.text) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                    'Acepta términos y condiciones para iniciar',
-                                    style: TextStyle(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                    ),
+                                    'Passwords don\'t match!',
                                   ),
-                                  duration: Duration(milliseconds: 4000),
-                                  backgroundColor:
-                                      FlutterFlowTheme.of(context).secondary,
                                 ),
                               );
+                              return;
                             }
 
-                            _navigate();
+                            final user =
+                                await authManager.createAccountWithEmail(
+                              context,
+                              _model.emailTextController.text,
+                              _model.passTextController.text,
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            context.goNamedAuth('home', context.mounted);
                           },
                           text: 'Crear cuenta',
                           options: FFButtonOptions(

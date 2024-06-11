@@ -149,7 +149,6 @@ class _NavBarPageState extends State<NavBarPage> {
       'tinder': TinderWidget(),
       'terapistashome': TerapistashomeWidget(),
       'PerfilDelCreador': PerfilDelCreadorWidget(),
-      'perfilexperiemnto': PerfilexperiemntoWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -214,14 +213,6 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 30.0,
             ),
             label: 'search',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FFIcons.kuserXray1,
-              size: 24.0,
-            ),
-            label: 'Home',
             tooltip: '',
           ),
           BottomNavigationBarItem(

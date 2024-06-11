@@ -61,9 +61,16 @@ class FFAppState extends ChangeNotifier {
     _video = _value;
   }
 
-  String _audio = '';
-  String get audio => _audio;
-  set audio(String _value) {
-    _audio = _value;
+  bool _isReproductor = true;
+  bool get isReproductor => _isReproductor;
+  set isReproductor(bool _value) {
+    _isReproductor = _value;
+  }
+
+  String _audio1 =
+      'https://res.cloudinary.com/du3hig4x5/video/upload/v1717701262/Ragas%20Ambient/Ragas_Ambient_-_Sound_Of_Shankara_hfdesx.mp3';
+  String get audio1 => _audio1;
+  set audio1(String _value) {
+    _audio1 = _value;
   }
 }

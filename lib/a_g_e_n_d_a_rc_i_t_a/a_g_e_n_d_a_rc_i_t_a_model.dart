@@ -1,8 +1,8 @@
-import '/components/p_e_r_i_lt_e_r_a_p_i_s_t_am_o_s_c_a_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/pantallas_deinicio/p_e_r_i_lt_e_r_a_p_i_s_t_am_o_s_c_a/p_e_r_i_lt_e_r_a_p_i_s_t_am_o_s_c_a_widget.dart';
 import 'a_g_e_n_d_a_rc_i_t_a_widget.dart' show AGENDARcITAWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

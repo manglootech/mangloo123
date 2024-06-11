@@ -176,7 +176,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'homeOriginal',
           path: '/homeOriginal',
-          builder: (context, params) => HomeOriginalWidget(),
+          builder: (context, params) => HomeOriginalWidget(
+            imagepath: params.getParam<TumbailsRow>(
+              'imagepath',
+              ParamType.SupabaseRow,
+            ),
+            name: params.getParam<TumbailsRow>(
+              'name',
+              ParamType.SupabaseRow,
+            ),
+          ),
         ),
         FFRoute(
           name: 'Carta1Adentro',
@@ -257,12 +266,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Capas1CartaDeContenido',
           path: '/capas1CartaDeContenido',
           builder: (context, params) => Capas1CartaDeContenidoWidget(
-            tumbail: params.getParam(
-              'tumbail',
+            imagenpath: params.getParam(
+              'imagenpath',
               ParamType.String,
             ),
-            nombre: params.getParam(
-              'nombre',
+            name: params.getParam(
+              'name',
+              ParamType.String,
+            ),
+            audio: params.getParam(
+              'audio',
               ParamType.String,
             ),
           ),
@@ -382,9 +395,36 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'perfilexperiemnto',
           path: '/perfilexperiemnto',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'perfilexperiemnto')
-              : PerfilexperiemntoWidget(),
+          builder: (context, params) => PerfilexperiemntoWidget(),
+        ),
+        FFRoute(
+          name: 'alertdialog',
+          path: '/alertdialog',
+          builder: (context, params) => AlertdialogWidget(),
+        ),
+        FFRoute(
+          name: 'subirCONTENTia',
+          path: '/subirCONTENTia',
+          builder: (context, params) => SubirCONTENTiaWidget(),
+        ),
+        FFRoute(
+          name: 'loguin',
+          path: '/loguin',
+          builder: (context, params) => LoguinWidget(),
+        ),
+        FFRoute(
+          name: 'ReproduccionPage',
+          path: '/reproduccionPage',
+          builder: (context, params) => ReproduccionPageWidget(
+            imagen2: params.getParam(
+              'imagen2',
+              ParamType.String,
+            ),
+            audio: params.getParam(
+              'audio',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

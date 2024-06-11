@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/carta1_contenido_popular_widget.dart';
 import '/components/carta1_widget.dart';
 import '/components/carta_terapistas_componte_widget.dart';

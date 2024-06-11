@@ -1,5 +1,5 @@
 import '/backend/supabase/supabase.dart';
-import '/components/carta1_widget.dart';
+import '/components/carta1_contenido_popular_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -15,17 +15,18 @@ class InteresesAdiccionesModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Model for carta1 component.
-  late Carta1Model carta1Model;
+  // Model for carta1ContenidoPopular component.
+  late Carta1ContenidoPopularModel carta1ContenidoPopularModel;
 
   @override
   void initState(BuildContext context) {
-    carta1Model = createModel(context, () => Carta1Model());
+    carta1ContenidoPopularModel =
+        createModel(context, () => Carta1ContenidoPopularModel());
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
-    carta1Model.dispose();
+    carta1ContenidoPopularModel.dispose();
   }
 }

@@ -99,10 +99,32 @@ class _TerapistashomeWidgetState extends State<TerapistashomeWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 10.0, 0.0),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.ellipsisH,
-                                        color: Color(0xFF878787),
-                                        size: 24.0,
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                            'TerapistaScrollHeaderCopy',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .rightToLeft,
+                                                duration:
+                                                    Duration(milliseconds: 200),
+                                              ),
+                                            },
+                                          );
+                                        },
+                                        child: FaIcon(
+                                          FontAwesomeIcons.ellipsisH,
+                                          color: Color(0xFF878787),
+                                          size: 24.0,
+                                        ),
                                       ),
                                     ),
                                   ],

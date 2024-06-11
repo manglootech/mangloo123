@@ -394,16 +394,39 @@ class _Welcome1WidgetState extends State<Welcome1Widget>
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     30.0, 8.0, 30.0, 0.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    'assets/images/Recurso_18mangloo.png',
-                                    width:
-                                        MediaQuery.sizeOf(context).width * 0.5,
-                                    height: MediaQuery.sizeOf(context).height *
-                                        0.05,
-                                    fit: BoxFit.contain,
-                                    alignment: Alignment(0.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (Navigator.of(context).canPop()) {
+                                      context.pop();
+                                    }
+                                    context.pushNamed(
+                                      'loguin',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.asset(
+                                      'assets/images/Recurso_18mangloo.png',
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.5,
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              0.05,
+                                      fit: BoxFit.contain,
+                                      alignment: Alignment(0.0, 0.0),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -421,11 +444,29 @@ class _Welcome1WidgetState extends State<Welcome1Widget>
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        wrapWithModel(
-                          model: _model.bUTTON2Model,
-                          updateCallback: () => setState(() {}),
-                          child: BUTTON2Widget(
-                            parameter1: false,
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed(
+                              'login',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                ),
+                              },
+                            );
+                          },
+                          child: wrapWithModel(
+                            model: _model.bUTTON2Model,
+                            updateCallback: () => setState(() {}),
+                            child: BUTTON2Widget(
+                              parameter1: false,
+                            ),
                           ),
                         ),
                       ],

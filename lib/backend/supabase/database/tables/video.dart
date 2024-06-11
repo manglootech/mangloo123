@@ -14,8 +14,8 @@ class VideoRow extends SupabaseDataRow {
   @override
   SupabaseTable get table => VideoTable();
 
-  int? get tags => getField<int>('TAGS');
-  set tags(int? value) => setField<int>('TAGS', value);
+  int get tags => getField<int>('TAGS')!;
+  set tags(int value) => setField<int>('TAGS', value);
 
   String? get lINKVideo => getField<String>('LINK video');
   set lINKVideo(String? value) => setField<String>('LINK video', value);

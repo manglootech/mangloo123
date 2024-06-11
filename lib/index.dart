@@ -58,8 +58,7 @@ export '/terapista_scroll_header_copy/terapista_scroll_header_copy_widget.dart'
     show TerapistaScrollHeaderCopyWidget;
 export '/terapista_scroll_header_copy2/terapista_scroll_header_copy2_widget.dart'
     show TerapistaScrollHeaderCopy2Widget;
-export '/pantallas_deinicio/terapista3/terapista3_widget.dart'
-    show Terapista3Widget;
+export '/terapista3/terapista3_widget.dart' show Terapista3Widget;
 export '/pantallas_deinicio/terapistashome/terapistashome_widget.dart'
     show TerapistashomeWidget;
 export '/pantallas_deinicio/perfil_del_creadorsegir/perfil_del_creadorsegir_widget.dart'
@@ -69,3 +68,9 @@ export '/pages/onboarding_login/subir_creador/subir_creador_widget.dart'
 export '/calendario/calendario_widget.dart' show CalendarioWidget;
 export '/pantallas_deinicio/perfilexperiemnto/perfilexperiemnto_widget.dart'
     show PerfilexperiemntoWidget;
+export '/alertdialog/alertdialog_widget.dart' show AlertdialogWidget;
+export '/subir_c_o_n_t_e_n_tia/subir_c_o_n_t_e_n_tia_widget.dart'
+    show SubirCONTENTiaWidget;
+export '/pages/main_pages/loguin/loguin_widget.dart' show LoguinWidget;
+export '/pantallas_deinicio/reproduccion_page/reproduccion_page_widget.dart'
+    show ReproduccionPageWidget;

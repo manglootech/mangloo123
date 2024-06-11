@@ -1,5 +1,5 @@
 import '/backend/supabase/supabase.dart';
-import '/components/carta1_widget.dart';
+import '/components/carta1_contenido_popular_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -101,7 +101,16 @@ class _InteresesAdiccionesWidgetState extends State<InteresesAdiccionesWidget> {
                                 size: 14.0,
                               ),
                               onPressed: () async {
-                                context.pushNamed('Search');
+                                context.pushNamed(
+                                  'Search',
+                                  extra: <String, dynamic>{
+                                    kTransitionInfoKey: TransitionInfo(
+                                      hasTransition: true,
+                                      transitionType:
+                                          PageTransitionType.leftToRight,
+                                    ),
+                                  },
+                                );
                               },
                             ),
                           ),
@@ -217,7 +226,7 @@ class _InteresesAdiccionesWidgetState extends State<InteresesAdiccionesWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Text(
-                                          'Recomendados',
+                                          'Mas reciente',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -247,11 +256,11 @@ class _InteresesAdiccionesWidgetState extends State<InteresesAdiccionesWidget> {
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                       child: wrapWithModel(
-                        model: _model.carta1Model,
+                        model: _model.carta1ContenidoPopularModel,
                         updateCallback: () => setState(() {}),
-                        child: Carta1Widget(),
+                        child: Carta1ContenidoPopularWidget(),
                       ),
                     ),
                   ],

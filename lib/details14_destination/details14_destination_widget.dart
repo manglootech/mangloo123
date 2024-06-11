@@ -222,7 +222,7 @@ class _Details14DestinationWidgetState extends State<Details14DestinationWidget>
                             size: 14.0,
                           ),
                           onPressed: () async {
-                            context.pushNamed('Capas1CartaDeContenido');
+                            context.safePop();
                           },
                         ),
                       ),

@@ -17,13 +17,14 @@ export 'capas1_carta_de_contenido_model.dart';
 class Capas1CartaDeContenidoWidget extends StatefulWidget {
   const Capas1CartaDeContenidoWidget({
     super.key,
-    String? tumbail,
-    String? nombre,
-  })  : this.tumbail = tumbail ?? ' ',
-        this.nombre = nombre ?? ' ';
+    this.imagenpath,
+    this.name,
+    this.audio,
+  });
 
-  final String tumbail;
-  final String nombre;
+  final String? imagenpath;
+  final String? name;
+  final String? audio;
 
   @override
   State<Capas1CartaDeContenidoWidget> createState() =>
@@ -44,7 +45,7 @@ class _Capas1CartaDeContenidoWidgetState
     _model = createModel(context, () => Capas1CartaDeContenidoModel());
 
     animationsMap.addAll({
-      'containerOnPageLoadAnimation1': AnimationInfo(
+      'containerOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           FadeEffect(
@@ -56,7 +57,7 @@ class _Capas1CartaDeContenidoWidgetState
           ),
         ],
       ),
-      'containerOnPageLoadAnimation2': AnimationInfo(
+      'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           MoveEffect(
@@ -110,13 +111,13 @@ class _Capas1CartaDeContenidoWidgetState
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: Image.asset(
-                          'assets/images/renato-andrade-fernandes-wk8rpygTnPQ-unsplash.jpg',
+                        image: Image.network(
+                          widget.imagenpath!,
                         ).image,
                       ),
                     ),
                   ).animateOnPageLoad(
-                      animationsMap['containerOnPageLoadAnimation1']!),
+                      animationsMap['containerOnPageLoadAnimation']!),
                 ),
               ],
             ),
@@ -165,7 +166,17 @@ class _Capas1CartaDeContenidoWidgetState
                             size: 14.0,
                           ),
                           onPressed: () async {
-                            context.safePop();
+                            context.pushNamed(
+                              'home',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType:
+                                      PageTransitionType.leftToRight,
+                                  duration: Duration(milliseconds: 30),
+                                ),
+                              },
+                            );
                           },
                         ),
                       ),
@@ -358,7 +369,10 @@ class _Capas1CartaDeContenidoWidgetState
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 10.0, 0.0, 0.0),
                               child: Text(
-                                'Ocean Of Gratitude\n-Meditation- By Z The\nHandpan Man',
+                                valueOrDefault<String>(
+                                  widget.name,
+                                  'u',
+                                ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -451,7 +465,19 @@ class _Capas1CartaDeContenidoWidgetState
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed('Details14Destination');
+                                    context.pushNamed(
+                                      'ReproduccionPage',
+                                      queryParameters: {
+                                        'imagen2': serializeParam(
+                                          widget.imagenpath,
+                                          ParamType.String,
+                                        ),
+                                        'audio': serializeParam(
+                                          widget.audio,
+                                          ParamType.String,
+                                        ),
+                                      }.withoutNulls,
+                                    );
                                   },
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -855,8 +881,7 @@ class _Capas1CartaDeContenidoWidgetState
                         ],
                       ),
                     ),
-                  ).animateOnPageLoad(
-                      animationsMap['containerOnPageLoadAnimation2']!),
+                  ),
                   Container(
                     width: double.infinity,
                     height: 50.0,
@@ -879,7 +904,7 @@ class _Capas1CartaDeContenidoWidgetState
                     ),
                   ),
                 ],
-              ),
+              ).animateOnPageLoad(animationsMap['stackOnPageLoadAnimation']!),
             ),
           ],
         ),

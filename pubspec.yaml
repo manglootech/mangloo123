@@ -48,13 +48,11 @@ dependencies:
   firebase_performance: 0.9.3+16
   firebase_performance_platform_interface: 0.1.4+24
   firebase_performance_web: 0.1.4+24
-  firebase_storage: 11.6.8
-  firebase_storage_platform_interface: 5.1.11
-  firebase_storage_web: 3.7.2
   flip_card: 0.7.0
   flutter_animate: 4.1.1+1
   flutter_cache_manager: 3.3.1
   flutter_card_swiper: 6.0.0
+  flutter_ffmpeg: ^0.4.2
   flutter_native_splash: 2.3.1
   flutter_plugin_android_lifecycle: 2.0.17
   flutter_rating_bar: 4.0.1
@@ -72,15 +70,10 @@ dependencies:
   google_sign_in_web: 0.12.1
   gotrue: 1.12.6
   hive: 2.2.3
-  image_picker: 1.0.4
-  image_picker_android: 0.8.8
-  image_picker_for_web: 3.0.1
-  image_picker_ios: 0.8.8+2
-  image_picker_platform_interface: 2.9.1
   intl: 0.18.1
   json_path: 0.6.2
+  just_audio: ^0.9.38
   lottie: 2.7.0
-  mime_type: 1.0.0
   page_transition: 2.1.0
   path_provider: 2.0.14
   path_provider_android: 2.0.25
@@ -105,6 +98,7 @@ dependencies:
   simple_gradient_text: 1.2.3
   smooth_page_indicator: 1.1.0
   sqflite: 2.2.6
+  stop_watch_timer: 3.0.2
   storage_client: 1.5.4
   stream_transform: 2.1.0
   supabase: 1.11.11

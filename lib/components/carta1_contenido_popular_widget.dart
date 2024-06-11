@@ -120,7 +120,16 @@ class _Carta1ContenidoPopularWidgetState
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                '14 min Música',
+                                'Adicciones',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      letterSpacing: 0.0,
+                                    ),
+                              ),
+                              Text(
+                                'Hace 3 dias',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -147,7 +156,7 @@ class _Carta1ContenidoPopularWidgetState
                         children: [
                           Expanded(
                             child: Text(
-                              'Tibetan mantra Mosaiic',
+                              'Como contarle a mis hijos que tengo problemas con el alcohol',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -168,26 +177,6 @@ class _Carta1ContenidoPopularWidgetState
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            '4.5',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Nunito',
-                                  color: Color(0xFF888888),
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                5.0, 0.0, 5.0, 0.0),
-                            child: Icon(
-                              Icons.star_rate,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 12.0,
-                            ),
-                          ),
                           Text(
                             'Helen  Berg',
                             style: FlutterFlowTheme.of(context)

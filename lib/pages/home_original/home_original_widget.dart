@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/carta1_contenido_popular_widget.dart';
 import '/components/carta1_widget.dart';
 import '/components/carta_terapistas_componte_widget.dart';
@@ -24,7 +25,14 @@ import 'home_original_model.dart';
 export 'home_original_model.dart';
 
 class HomeOriginalWidget extends StatefulWidget {
-  const HomeOriginalWidget({super.key});
+  const HomeOriginalWidget({
+    super.key,
+    this.imagepath,
+    this.name,
+  });
+
+  final TumbailsRow? imagepath;
+  final TumbailsRow? name;
 
   @override
   State<HomeOriginalWidget> createState() => _HomeOriginalWidgetState();
@@ -1952,30 +1960,10 @@ class _HomeOriginalWidgetState extends State<HomeOriginalWidget>
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed(
-                                        'Capas1CartaDeContenido',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.fade,
-                                            duration:
-                                                Duration(milliseconds: 200),
-                                          ),
-                                        },
-                                      );
-                                    },
-                                    child: wrapWithModel(
-                                      model: _model.carta1Model,
-                                      updateCallback: () => setState(() {}),
-                                      child: Carta1Widget(),
-                                    ),
+                                  wrapWithModel(
+                                    model: _model.carta1Model,
+                                    updateCallback: () => setState(() {}),
+                                    child: Carta1Widget(),
                                   ),
                                 ],
                               ),
